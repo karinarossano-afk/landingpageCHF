@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capacitarte Hacia el Futuro (CHF) - Robótica Educativa</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Paleta de colores CHF */
+            --brand-pink: #E6007E;        /* Magenta principal */
+            --brand-pink-dark: #C4006B;   /* Magenta hover */
+            --brand-green: #009B72;       /* Verde Esmeralda */
+            --brand-green-light: #00C298; /* Verde Menta / Cian */
+            --brand-dark: #0A2E25;        /* Verde Oscuro Profundo */
+            
+            --bg-light: #F8FAFC;         /* Fondo General */
+            --surface: #FFFFFF;          /* Tarjetas */
+            --text-main: #1E293B;        /* Texto Principal */
+            --text-muted: #64748B;       /* Texto Secundario */
+            --whatsapp-color: #25D366;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        h1, h2, h3, h4, .brand-font {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* HEADER & NAVBAR */
+        header {
+            background: var(--surface);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-box img {
+            height: 70px;
+            width: auto;
+            display: block;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.85rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--brand-pink), var(--brand-pink-dark));
+            color: white;
+            box-shadow: 0 4px 15px rgba(230, 0, 126, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(230, 0, 126, 0.4);
+        }
+
+        .btn-whatsapp {
+            background-color: var(--whatsapp-color);
+            color: white;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1eb954;
+            transform: translateY(-2px);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, var(--brand-dark) 0%, #051A15 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(230,0,126,0.2) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .slogan-tag {
+            display: inline-block;
+            background: rgba(0, 194, 152, 0.15);
+            color: var(--brand-green-light);
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(0, 194, 152, 0.3);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--brand-pink);
+            background: linear-gradient(135deg, var(--brand-pink), var(--brand-green-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #CBD5E1;
+            margin-bottom: 2.5rem;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* GENERAL SECTIONS */
+        section {
+            padding: 4.5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.3rem;
+            color: var(--brand-green);
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* FUNDADORAS */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-card {
+            background: var(--surface);
+            padding: 2.2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border-top: 5px solid var(--brand-green);
+            transition: transform 0.3s ease;
+        }
+
+        .team-card:nth-child(2) {
+            border-top-color: var(--brand-pink);
+        }
+
+        .team-card:nth-child(3) {
+            border-top-color: var(--brand-green-light);
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-card .role-badge {
+            display: inline-block;
+            background: rgba(0, 155, 114, 0.1);
+            color: var(--brand-green);
+            font-size: 0.8rem;
+            font-weight: 800;
+            padding: 5px 14px;
+            border-radius: 20px;
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+        }
+
+        .team-card:nth-child(2) .role-badge {
+            background: rgba(230, 0, 126, 0.1);
+            color: var(--brand-pink);
+        }
+
+        .team-card h3 {
+            font-size: 1.4rem;
+            color: var(--brand-dark);
+            margin-bottom: 0.8rem;
+        }
+
+        .team-card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        /* NIVELES Y SERVICIOS */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .card-item {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            border: 1px solid #E2E8F0;
+            transition: all 0.3s ease;
+        }
+
+        .card-item:hover {
+            border-color: var(--brand-green-light);
+        }
+
+        .card-item h3 {
+            color: var(--brand-green);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.2rem;
+        }
+
+        .card-item h3 i {
+            color: var(--brand-pink);
+            font-size: 1.4rem;
+        }
+
+        /* PRECIOS Y SIMULADOR */
+        .pricing-table-wrapper {
+            overflow-x: auto;
+            background: var(--surface);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border: 1px solid #E2E8F0;
+            margin-bottom: 3rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 1.3rem 1.8rem;
+            border-bottom: 1px solid #E2E8F0;
+        }
+
+        th {
+            background-color: rgba(0, 155, 114, 0.05);
+            color: var(--brand-green);
+            font-weight: 800;
+            font-size: 1.05rem;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .price-tag {
+            font-weight: 800;
+            color: var(--brand-pink);
+            font-size: 1.2rem;
+        }
+
+        /* SIMULADOR */
+        .simulator-box {
+            background: var(--surface);
+            border: 2px solid var(--brand-green-light);
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .simulator-box h3 {
+            color: var(--brand-green);
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .simulator-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-weight: 700;
+            color: var(--brand-dark);
+        }
+
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .slider-container input[type="range"] {
+            flex: 1;
+            accent-color: var(--brand-pink);
+            height: 8px;
+            cursor: pointer;
+        }
+
+        .number-badge {
+            background: var(--brand-pink);
+            color: white;
+            font-weight: 800;
+            padding: 4px 15px;
+            border-radius: 20px;
+            font-size: 1.1rem;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .sim-results {
+            background: #F1F5F9;
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .res-item strong {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .res-item span {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--brand-dark);
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .res-item span.highlight-price {
+            color: var(--brand-pink);
+        }
+
+        /* CONTACTO Y FOOTER */
+        .contact-section {
+            background: linear-gradient(135deg, var(--brand-dark) 0%, #051A15 100%);
+            color: white;
+            border-radius: 28px;
+            padding: 4.5rem 2rem;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .contact-section h2 {
+            font-size: 2.3rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .contact-channels {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .channel-card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 1.5rem 2rem;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            min-width: 260px;
+        }
+
+        .channel-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-4px);
+            border-color: var(--brand-pink);
+        }
+
+        .channel-card i {
+            font-size: 2rem;
+            color: var(--brand-pink);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid #E2E8F0;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .nav-container { flex-direction: column; gap: 15px; }
+            .contact-channels { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo-box">
+                <!-- Coloca el archivo LogoNuevo.png en la misma carpeta que este HTML -->
+                <img src="LogoNuevo.png" alt="Capacitarte Hacia el Futuro - CHF Robótica Educativa">
+            </a>
+            <a href="https://wa.me/5491126037464" target="_blank" class="btn btn-whatsapp">
+                <i class="fa-brands fa-whatsapp"></i> Contactar por WhatsApp
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="slogan-tag">• Dale la mano a tus sueños •</span>
+            <h1>Transformá la <span>Educación Digital</span> en tu Escuela</h1>
+            <p>Acompañamos a instituciones educativas en la integración pedagógica de Inteligencia Artificial, Robótica Educativa, Programación y Entornos Virtuales de Aprendizaje.</p>
+            <div class="hero-btns">
+                <a href="https://wa.me/5491126037464?text=Hola,%20quisiera%20solicitar%20asesor%C3%ADa%20gratuita%20para%20mi%20instituci%C3%B3n." target="_blank" class="btn btn-primary">
+                    <i class="fa-regular fa-calendar-check"></i> Solicitar Asesoría Gratuita
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE NOSOTRAS / EQUIPO -->
+    <section>
+        <div class="section-header">
+            <h2>¿Quiénes Somos?</h2>
+            <p>Tres fundadoras asociadas con una destacada trayectoria en el ámbito educativo e innovación digital.</p>
+        </div>
+        
+        <div class="team-grid">
+            <!-- Karina -->
+            <div class="team-card">
+                <span class="role-badge">Fundadora</span>
+                <h3>Lic. Karina Andrea Rossano</h3>
+                <p>Facilitadora Pedagógica Digital en Nivel Inicial y docente de Tecnología, Diseño y Programación. Profesora de Educación Tecnológica y Licenciada en Enseñanza con Tecnologías Digitales. Especialista en crear experiencias de 'aprender haciendo' con Robótica, Programación e IA.</p>
+            </div>
+            <!-- Claudia -->
+            <div class="team-card">
+                <span class="role-badge">Co-Fundadora</span>
+                <h3>Lic. Claudia Maidana</h3>
+                <p>Asesora Pedagógica Digital (Nivel Primario) y Profesora universitaria en la Universidad de la Ciudad. Licenciada en Enseñanza con Tecnologías Digitales y Maestranda en Didáctica Profesional (UNIPE). Ex administradora SIED y formadora docente en Escuela de Maestros.</p>
+            </div>
+            <!-- Pilar -->
+            <div class="team-card">
+                <span class="role-badge">Co-Fundadora</span>
+                <h3>Lic. Pilar Aguirre</h3>
+                <p>Supervisora del área de Tecnologías, Diseño y Programación (Nivel Primario, D.E. 4 y 5, CABA). Profesora de Educación Tecnológica y Licenciada en Enseñanza con Tecnologías Digitales. Especialista en IA generativa, acompañamiento pedagógico y proyectos con Scratch, Micro:Bit, Arduino y mBlock.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- NIVELES EDUCATIVOS -->
+    <section>
+        <div class="section-header">
+            <h2>Niveles Educativos que Acompañamos</h2>
+            <p>Propuestas hechas a la medida y adecuadas a los nuevos Diseños Curriculares.</p>
+        </div>
+        <div class="grid-2">
+            <div class="card-item">
+                <h3><i class="fa-solid fa-shapes"></i> Nivel Inicial</h3>
+                <p>Iniciación en alfabetización digital, pensamiento computacional y exploración lúdica con robótica.</p>
+            </div>
+            <div class="card-item">
+                <h3><i class="fa-solid fa-laptop-code"></i> Nivel Primario</h3>
+                <p>Programación, robótica educativa (Scratch, Micro:Bit, Arduino), ciudadanía digital y proyectos interdisciplinarios.</p>
+            </div>
+            <div class="card-item">
+                <h3><i class="fa-solid fa-brain"></i> Nivel Secundario</h3>
+                <p>Uso crítico de la Inteligencia Artificial generativa, programación avanzada y resolución de problemas tecnológicos.</p>
+            </div>
+            <div class="card-item">
+                <h3><i class="fa-solid fa-graduation-cap"></i> Nivel Terciario</h3>
+                <p>Creación y gestión de Aulas Virtuales, formación de futuros docentes e implementación alineada al marco SIED.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section>
+        <div class="section-header">
+            <h2>Servicios y Soluciones</h2>
+        </div>
+        <div class="grid-2">
+            <div class="card-item">
+                <h3>Talleres y Formaciones</h3>
+                <p>Capacitaciones dinámicas para docentes, estudiantes y familias en modalidad presencial, virtual o asincrónica.</p>
+            </div>
+            <div class="card-item">
+                <h3>Asesorías Personalizadas</h3>
+                <p>Acompañamiento continuo institucional con visitas mensuales para diagnóstico y adecuación pedagógica digital.</p>
+            </div>
+            <div class="card-item">
+                <h3>Ciudadanía Digital</h3>
+                <p>Talleres basados en el marco oficial de Protección Digital Infantil y Adolescente para familias y estudiantes.</p>
+            </div>
+            <div class="card-item">
+                <h3>Soluciones SIED / Aulas Virtuales</h3>
+                <p>Asesoramiento especializado en la estructuración y administración de Entornos Virtuales de Aprendizaje (EVA).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRECIOS Y SIMULADOR -->
+    <section>
+        <div class="section-header">
+            <h2>Inversión y Honorarios</h2>
+            <p>Valores por contingentes / grupos aplicables a formaciones docentes, talleres para estudiantes o familias.</p>
+        </div>
+
+        <div class="pricing-table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tamaño del Grupo</th>
+                        <th>Inversión por Persona</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Hasta 20 personas</td>
+                        <td class="price-tag">$15.000 / persona</td>
+                    </tr>
+                    <tr>
+                        <td>Hasta 30 personas</td>
+                        <td class="price-tag">$12.000 / persona</td>
+                    </tr>
+                    <tr>
+                        <td>Hasta 40 personas</td>
+                        <td class="price-tag">$10.000 / persona</td>
+                    </tr>
+                    <tr>
+                        <td>Hasta 50 personas</td>
+                        <td class="price-tag">$9.000 / persona</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- SIMULADOR INTERACTIVO -->
+        <div class="simulator-box">
+            <h3><i class="fa-solid fa-calculator"></i> Simulador de Inversión</h3>
+            <p>Seleccioná la cantidad de participantes para estimar el costo de la propuesta para tu institución:</p>
+            
+            <div class="simulator-form">
+                <div class="form-group">
+                    <label for="participants">Cantidad de Participantes:</label>
+                    <div class="slider-container">
+                        <input type="range" id="participants" min="5" max="50" value="20" step="1" oninput="calculateCost()">
+                        <span class="number-badge" id="part-count">20</span>
+                    </div>
+                </div>
+
+                <div class="sim-results">
+                    <div class="res-item">
+                        <strong>Precio unitario:</strong>
+                        <span id="unit-price">$15.000</span>
+                    </div>
+                    <div class="res-item">
+                        <strong>Inversión Estimada:</strong>
+                        <span class="highlight-price" id="total-price">$300.000</span>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 1rem;">
+                    <a id="wa-budget-btn" href="#" target="_blank" class="btn btn-primary">
+                        <i class="fa-brands fa-whatsapp"></i> Solicitar Presupuesto Con este Grupo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO Y CTA -->
+    <section class="contact-section">
+        <h2>¿Querés transformar la propuesta tecnológica de tu escuela?</h2>
+        <p>Ponete en contacto con el equipo de CHF para coordinar una reunión y armar un plan a la medida de tu institución.</p>
+        
+        <div class="contact-channels">
+            <a href="https://wa.me/5491126037464" target="_blank" class="channel-card">
+                <i class="fa-brands fa-whatsapp"></i>
+                <div style="text-align: left;">
+                    <strong>WhatsApp</strong>
+                    <p style="margin: 0; font-size: 0.9rem; color: #CBD5E1;">+54 9 11 2603 7464</p>
+                </div>
+            </a>
+
+            <a href="mailto:capacitartehaciaelfuturo@gmail.com" class="channel-card">
+                <i class="fa-regular fa-envelope"></i>
+                <div style="text-align: left;">
+                    <strong>Email</strong>
+                    <p style="margin: 0; font-size: 0.9rem; color: #CBD5E1;">capacitartehaciaelfuturo@gmail.com</p>
+                </div>
+            </a>
+
+            <a href="https://instagram.com/capacitartehaciaelfuturo" target="_blank" class="channel-card">
+                <i class="fa-brands fa-instagram"></i>
+                <div style="text-align: left;">
+                    <strong>Instagram</strong>
+                    <p style="margin: 0; font-size: 0.9rem; color: #CBD5E1;">@capacitartehaciaelfuturo</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; Capacitarte Hacia el Futuro (CHF) - Robótica Educativa. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- LÓGICA DEL SIMULADOR -->
+    <script>
+        function calculateCost() {
+            const count = parseInt(document.getElementById('participants').value);
+            document.getElementById('part-count').innerText = count;
+
+            let pricePerPerson = 15000;
+
+            if (count <= 20) {
+                pricePerPerson = 15000;
+            } else if (count <= 30) {
+                pricePerPerson = 12000;
+            } else if (count <= 40) {
+                pricePerPerson = 10000;
+            } else {
+                pricePerPerson = 9000;
+            }
+
+            const total = count * pricePerPerson;
+
+            document.getElementById('unit-price').innerText = '$' + pricePerPerson.toLocaleString('es-AR');
+            document.getElementById('total-price').innerText = '$' + total.toLocaleString('es-AR');
+
+            // Actualizar enlace dinámico de WhatsApp
+            const waBtn = document.getElementById('wa-budget-btn');
+            const message = encodeURIComponent(`Hola, estuve calculando en la web un grupo de ${count} personas (inversión estimada: $${total.toLocaleString('es-AR')}) y quisiera coordinar una propuesta para mi institución.`);
+            waBtn.href = `https://wa.me/5491126037464?text=${message}`;
+        }
+
+        // Ejecutar al cargar la página
+        calculateCost();
+    </script>
+</body>
+</html>
